@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
+
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>{% include "_brandname.html" %}</h1>
+          <h2>Where code meets data.</h2>
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h2>Python development</h2>
+        <p>I have worked in Python since 2013. I believe this is the best programming language, easy to read, concise, dynamic and it comes with great libraries. My favorites are Django or Flask for web development, NumPy and Pandas for data analyses, PyQt for desktop apps and Jupiter notebook.</p>
+      </div>
+      <div class="col-lg-4">
+        <h2>Front-end development</h2>
+        <p> I am not a typical front-end guy as I prefer more coding then styling. But Javascript has grown to ES6+. I had really nice time to work with it. My favorite frameworks I have been working with are React/Redux and Angular.</p>
+      </div>
+      <div class="col-lg-4">
+        <h2>DevOps operations</h2>
+        <p>I self taught most my devOps skills. It was always a need to prepare server or setup CI environment. From bare metal server to cloud. Nowadays I prefer and recommend AWS services. I believe they are far best option.</p>
+      </div>
+    </div>
+
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
+

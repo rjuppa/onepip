@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}About{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="about" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec1" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>{% include "_brandname.html" %}</h1>
+        <p class="lead">Software Development</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>One Man Company</h2>
+        <p class="lead">This site is just for fun and my personal sandbox.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/9/" alt="profile pic"></div>
+
+        <h2>Python development</h2>
+        <p>I have worked in Python since 2013. I believe this is the best programming language, easy to read, concise, dynamic and it comes with great libraries. My favorites are Django or Flask for web development, NumPy and Pandas for data analyses, PyQt for desktop apps and Jupiter notebook.</p>
+      </div>
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/2/" alt="profile pic"></div>
+
+        <h2>Front-end development</h2>
+        <p> I am not a typical front-end guy as I prefer more coding then styling. But Javascript has grown to ES6+. I had really nice time to work with it. My favorite frameworks I have been working with are React/Redux and Angular.</p>
+      </div>
+      <div class="col-lg-4">
+        <div class="text-center"><img class="img-circle centered" src="http://lorempixel.com/128/128/people/1/" alt="profile pic"></div>
+
+        <h2>DevOps operations</h2>
+        <p>I self taught most my devOps skills. It was always a need to prepare server or setup CI environment. From bare metal server to cloud. Nowadays I prefer and recommend AWS services. I believe they are far best option.</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="sec3">
+  <div class="container">
+
+    <div class="row">
+
+    </div>
+  </div>
+</div>
+{% endblock container %}
+
+{% block scripts %}
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script>
+
+   function init_map() {
+     // Enter the latitude and longitude of your office here
+	 var myLocation = new google.maps.LatLng(27.176141, 78.042370);
+
+     var mapOptions = {
+          center: myLocation,
+          zoom: 14
+     };
+
+	 var marker = new google.maps.Marker({
+	   position: myLocation,
+	   title:"We are here"});
+
+     var map = new google.maps.Map(document.getElementById("map-container"),
+                                   mapOptions);
+	 marker.setMap(map);
+   }
+
+   google.maps.event.addDomListener(window, 'load', init_map);
+  </script>
+{% endblock scripts %}
