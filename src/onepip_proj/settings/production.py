@@ -9,7 +9,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Must mention ALLOWED_HOSTS in production!
-ALLOWED_HOSTS = ["ec2-52-56-51-123.eu-west-2.compute.amazonaws.com", "52.56.51.123"]
+ALLOWED_HOSTS = ["remoteship.co.uk", "52.56.51.123"]
 
 # Cache the templates in memory for speed-up
 loaders = [
