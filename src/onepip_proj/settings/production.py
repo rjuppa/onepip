@@ -48,16 +48,30 @@ LOGGING = {
             'filename': join(LOGFILE_ROOT, 'onepip.log'),
             'formatter': 'verbose'
         },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+            'formatter': 'verbose'
         }
     },
     'loggers': {
         'project': {
             'handlers': ['proj_log_file'],
             'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        '': {
+            'handlers': ['proj_log_file', 'console'],
+            'level': 'WARNING',
+            'propagate': True,
         },
     }
 }
